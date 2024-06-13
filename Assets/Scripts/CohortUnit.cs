@@ -9,20 +9,24 @@ public class CohortUnit : Unit
 {
 
     public string trueName;
+    [SerializeField] TextMeshProUGUI nameTag;
+    [SerializeField] TextMeshProUGUI trueNameTag;
 
-
-    public TextMeshProUGUI nameTag;
+    // public TextMeshProUGUI nameTag;
 
     // Start is called before the first frame update
     void OnValidate()
     {
-        nameTag = GetComponentInChildren<TextMeshProUGUI>(true);
+        // nameTag = GetComponentInChildren<TextMeshProUGUI>(true);
         nameTag.text = unitName;
+        trueNameTag.text = $"\"{trueName}\"";
     }
 
     void Start()
     {
-        nameTag = GetComponentInChildren<TextMeshProUGUI>(true);
+        // nameTag = GetComponentInChildren<TextMeshProUGUI>(true);
+        nameTag.text = unitName;
+        trueNameTag.text = $"\"{trueName}\"";
     }
 
     // Update is called once per frame
@@ -42,11 +46,13 @@ public class CohortUnit : Unit
         base.OnSelect();
         print("Selected " + unitName + ", " + nameTag);
         nameTag.gameObject.SetActive(true);
+        trueNameTag.gameObject.SetActive(true);
     }
     public override void OnDeselect()
     {
         base.OnDeselect();
         nameTag.gameObject.SetActive(false);
+        trueNameTag.gameObject.SetActive(false);
     }
 
 }
