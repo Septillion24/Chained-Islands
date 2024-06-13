@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class CameraController : MonoBehaviour
 {
@@ -81,24 +82,15 @@ public class CameraController : MonoBehaviour
             if (hit.collider != null)
             {
                 Island island = hit.collider.gameObject.GetComponent<Island>();
-
+                CohortUnit clickedUnit = hit.collider.gameObject.GetComponent<CohortUnit>();
                 if (island != null)
                 {
-                    foreach (Selectable selectable in selectedObjects)
-                    {
-                        CohortUnit unit = selectable.GetComponent<CohortUnit>();
-                        if (unit != null)
-                        {
-                            if (cohortManager.TryMoveUnit(unit, island))
-                            {
-                                // Yay!
-                            }
-                            else
-                            {
-                                // Boo!
-                            }
-                        }
-                    }
+                    moveAllSelected(island);
+                }
+                else if (clickedUnit != null)
+                {
+                    island = clickedUnit.currentLocation;
+                    moveAllSelected(island);
                 }
             }
         }
@@ -112,6 +104,24 @@ public class CameraController : MonoBehaviour
         velocity *= Mathf.Pow(0.05f, Time.deltaTime);
         zoomVelocity *= Mathf.Pow(0.02f, Time.deltaTime);
     }
+
+    private bool moveAllSelected(Island location)
+    {
+        bool success = true;
+        foreach (Selectable selectable in selectedObjects)
+        {
+            CohortUnit unit = selectable.GetComponent<CohortUnit>();
+            if (unit == null) continue;
+
+            if (!cohortManager.TryMoveUnit(unit, location))
+            {
+                success = false;
+            }
+
+        }
+        return success;
+    }
+
 
     private void Select(Selectable selected)
     {

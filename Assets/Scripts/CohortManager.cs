@@ -28,12 +28,8 @@ public class CohortManager : MonoBehaviour
             cohortUnit.currentLocation = islandManager.startIsland;
             islandManager.startIsland.cohortUnitsStationedHere.Add(cohortUnit);
         }
+        SetCohortPositions();
 
-        Vector3[] cohortPositions = islandManager.startIsland.getCohortPositions();
-        for (int i = 0; i < cohortPositions.Length; i++)
-        {
-            cohortUnits[i].transform.position = cohortPositions[i];
-        }
 
 
 
@@ -47,6 +43,32 @@ public class CohortManager : MonoBehaviour
 
     }
 
+    void SetCohortPositions()
+    {
+        Dictionary<Island, List<CohortUnit>> allCohortPositions = new Dictionary<Island, List<CohortUnit>>();
+        foreach (CohortUnit unit in cohortUnits)
+        {
+            Island unitPosition = unit.currentLocation;
+            if (allCohortPositions.Keys.Contains(unitPosition))
+            {
+                allCohortPositions[unitPosition].Add(unit);
+            }
+            else
+            {
+                allCohortPositions[unitPosition] = new List<CohortUnit> { unit };
+            }
+        }
+        foreach (Island island in allCohortPositions.Keys)
+        {
+            Vector3[] islandCohortPositions = island.getCohortPositions();
+            List<CohortUnit> unitsOnIsland = allCohortPositions[island];
+            for (int i = 0; i < unitsOnIsland.Count; i++)
+            {
+                unitsOnIsland[i].transform.position = islandCohortPositions[i];
+            }
+        }
+    }
+
 
     public bool TryMoveUnit(CohortUnit unit, Island islandToGoTo)
     {
@@ -56,11 +78,12 @@ public class CohortManager : MonoBehaviour
             currentIsland.cohortUnitsStationedHere.Remove(unit);
             islandToGoTo.cohortUnitsStationedHere.Add(unit);
             unit.MoveTo(islandToGoTo);
+            SetCohortPositions();
             return true;
         }
         return false;
     }
 
- 
+
 
 }
