@@ -19,6 +19,7 @@ public class CohortManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // TODO: do this when moving normally
         foreach (CohortUnit cohortMemberPrefab in cohortMemberPrefabs)
         {
             CohortUnit cohortUnit = Instantiate(cohortMemberPrefab, transform.position, Quaternion.identity, transform);
@@ -45,4 +46,21 @@ public class CohortManager : MonoBehaviour
     {
 
     }
+
+
+    public bool TryMoveUnit(CohortUnit unit, Island islandToGoTo)
+    {
+        Island currentIsland = unit.currentLocation;
+        if (islandManager.CheckAdjacent(currentIsland, islandToGoTo))
+        {
+            currentIsland.cohortUnitsStationedHere.Remove(unit);
+            islandToGoTo.cohortUnitsStationedHere.Add(unit);
+            unit.MoveTo(islandToGoTo);
+            return true;
+        }
+        return false;
+    }
+
+ 
+
 }

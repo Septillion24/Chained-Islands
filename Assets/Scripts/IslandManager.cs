@@ -42,9 +42,18 @@ public class IslandManager : MonoBehaviour
     }
 
 
+    public bool CheckAdjacent(Island startIsland, Island endIsland)
+    {
+        if (startIsland.adjacentIslands.Contains(endIsland))
+        {
+            return true;
+        }
+        return false;
+    }
 
 
-    
 
-    
+
+
+
 }

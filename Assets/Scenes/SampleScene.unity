@@ -359,8 +359,8 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 0, b: 0, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -431,6 +431,7 @@ MonoBehaviour:
   zoomSpeed: 5
   minZoom: 1
   maxZoom: 20
+  cohortManager: {fileID: 43089230}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,6 +532,18 @@ PrefabInstance:
       propertyPath: islandSprite
       value: 
       objectReference: {fileID: 21300000, guid: e40b3b97503177840b5121254be39fdf, type: 3}
+    - target: {fileID: 2215836409021914898, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
+      propertyPath: adjacentIslands.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215836409021914898, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
+      propertyPath: adjacentIslands.Array.data[0]
+      value: 
+      objectReference: {fileID: 419905653}
+    - target: {fileID: 2215836409021914898, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
+      propertyPath: adjacentIslands.Array.data[1]
+      value: 
+      objectReference: {fileID: 351491001}
     - target: {fileID: 6201929813403175758, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
       propertyPath: m_Size.x
       value: 2.455
@@ -703,8 +716,20 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: fbc7ee4cc0b0a4747acdcf0ef8eed053, type: 3}
     - target: {fileID: 2215836409021914898, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
       propertyPath: adjacentIslands.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2215836409021914898, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
+      propertyPath: adjacentIslands.Array.data[0]
+      value: 
+      objectReference: {fileID: 1685033841}
+    - target: {fileID: 2215836409021914898, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
+      propertyPath: adjacentIslands.Array.data[1]
+      value: 
+      objectReference: {fileID: 493407488}
+    - target: {fileID: 2215836409021914898, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
+      propertyPath: adjacentIslands.Array.data[2]
+      value: 
+      objectReference: {fileID: 419905653}
     - target: {fileID: 6201929813403175758, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
       propertyPath: m_Size.x
       value: 2.455
@@ -788,7 +813,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 582af2417376ccc44b7591635bbb6fb8, type: 3}
     - target: {fileID: 2215836409021914898, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
       propertyPath: adjacentIslands.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2215836409021914898, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
       propertyPath: adjacentIslands.Array.data[0]
@@ -798,6 +823,10 @@ PrefabInstance:
       propertyPath: adjacentIslands.Array.data[1]
       value: 
       objectReference: {fileID: 351491001}
+    - target: {fileID: 2215836409021914898, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
+      propertyPath: adjacentIslands.Array.data[2]
+      value: 
+      objectReference: {fileID: 1685033841}
     - target: {fileID: 2215836409021914898, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
       propertyPath: cohortUnitsStationedHere.Array.size
       value: 0

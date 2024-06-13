@@ -15,8 +15,9 @@ public class CameraController : MonoBehaviour
     public float zoomSpeed = 5.0f;
     public float minZoom = 1.0f;
     public float maxZoom = 20.0f;
+    public CohortManager cohortManager;
 
-    private
+
 
     // Start is called before the first frame update
     void Start()
@@ -67,10 +68,39 @@ public class CameraController : MonoBehaviour
                     Select(selectable);
                 }
             }
-            else{
+            else
+            {
                 DeselectAll();
             }
 
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            if (hit.collider != null)
+            {
+                Island island = hit.collider.gameObject.GetComponent<Island>();
+
+                if (island != null)
+                {
+                    foreach (Selectable selectable in selectedObjects)
+                    {
+                        CohortUnit unit = selectable.GetComponent<CohortUnit>();
+                        if (unit != null)
+                        {
+                            if (cohortManager.TryMoveUnit(unit, island))
+                            {
+                                // Yay!
+                            }
+                            else
+                            {
+                                // Boo!
+                            }
+                        }
+                    }
+                }
+            }
         }
 
 
