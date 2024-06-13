@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     Vector3 velocity;
     float zoomVelocity;
     float zoom = 5.0f;
-    List<Selectable> selectedObjects = new List<Selectable>();
+    List<ISelectable> selectedObjects = new List<ISelectable>();
 
     public float zoomSpeed = 5.0f;
     public float minZoom = 1.0f;
@@ -60,7 +60,7 @@ public class CameraController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
             if (hit.collider != null)
             {
-                Selectable selectable = hit.collider.gameObject.GetComponent<Selectable>();
+                ISelectable selectable = hit.collider.gameObject.GetComponent<ISelectable>();
                 if (selectable != null)
                 {
                     Select(selectable);
@@ -105,9 +105,10 @@ public class CameraController : MonoBehaviour
     private bool moveAllSelected(Island location)
     {
         bool success = true;
-        foreach (Selectable selectable in selectedObjects)
+        foreach (ISelectable selectable in selectedObjects)
         {
-            CohortUnit unit = selectable.GetComponent<CohortUnit>();
+
+            CohortUnit unit = selectable.GetGameObject().GetComponent<CohortUnit>();
             if (unit == null) continue;
 
             if (!cohortManager.TryMoveUnit(unit, location))
@@ -120,11 +121,11 @@ public class CameraController : MonoBehaviour
     }
 
 
-    private void Select(Selectable selected)
+    private void Select(ISelectable selected)
     {
         if (Input.GetKey(KeyCode.LeftShift) == false)
         {
-            foreach (Selectable selectable in selectedObjects)
+            foreach (ISelectable selectable in selectedObjects)
             {
                 selectable.OnDeselect();
             }
@@ -135,7 +136,7 @@ public class CameraController : MonoBehaviour
     }
     private void DeselectAll()
     {
-        foreach (Selectable selectable in selectedObjects)
+        foreach (ISelectable selectable in selectedObjects)
         {
             selectable.OnDeselect();
         }

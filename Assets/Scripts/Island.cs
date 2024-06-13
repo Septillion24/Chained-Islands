@@ -4,7 +4,7 @@ using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Island : MonoBehaviour
+public class Island : MonoBehaviour, ISelectable
 {
     public Sprite islandSprite;
     public Island[] adjacentIslands;
@@ -17,6 +17,9 @@ public class Island : MonoBehaviour
     public bool useMaxWidth = false;
 
     public List<CohortUnit> cohortUnitsStationedHere;
+    public List<Enemy> enemiesStationedHere;
+
+    public bool isSelected { get => isSelected; set => isSelected = value; }
 
 
     // Start is called before the first frame update
@@ -100,6 +103,28 @@ public class Island : MonoBehaviour
         return positions;
     }
 
+    public void OnSelect()
+    {
+        isSelected = true;
+        SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
+        if (renderer != null && SelectableMaterials.selectedMaterial != null)
+        {
+            renderer.material = SelectableMaterials.selectedMaterial;
+        }
+    }
 
+    public void OnDeselect()
+    {
+        isSelected = false;
+        SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
+        if (renderer != null)
+        {
+            renderer.material = SelectableMaterials.defaultMaterial;
+        }
+    }
 
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
 }

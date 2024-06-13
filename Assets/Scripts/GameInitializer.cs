@@ -11,8 +11,8 @@ public class GameInitializer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Selectable.defaultMaterial = defaultSpriteMaterial;
-        Selectable.selectedMaterial = spriteSelectionMaterial;
+        SelectableMaterials.defaultMaterial = defaultSpriteMaterial;
+        SelectableMaterials.selectedMaterial = spriteSelectionMaterial;
     }
 
     // Update is called once per frame

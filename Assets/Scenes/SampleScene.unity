@@ -154,10 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   islandManager: {fileID: 416941054}
   cohortMemberPrefabs:
-  - {fileID: 3419718321980626892, guid: d952f3157dedc504f8a63394c15b1699, type: 3}
-  - {fileID: 1272815285145765568, guid: 2f4df1dd92c094a43999512eb24d8028, type: 3}
-  - {fileID: -2730967672863397795, guid: d7a508202dd6a3e42badaaebe4cff14b, type: 3}
-  - {fileID: 1267971307424860814, guid: 0539acd350db35f45989e94c7b12161e, type: 3}
+  - {fileID: 8140531847187031923, guid: 7a159188b0a613c4cb75a3842bf8ae38, type: 3}
+  - {fileID: 1972316456047921147, guid: 9187bf9f614485443839ff4ba081ecad, type: 3}
+  - {fileID: 6310565002697671608, guid: f129bc86f9ad92a438521021fd860cce, type: 3}
+  - {fileID: 5013484646970996354, guid: 1795e634a56b68145aa306b26cf832d3, type: 3}
 --- !u!4 &43089231
 Transform:
   m_ObjectHideFlags: 0
@@ -868,6 +868,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
+--- !u!1 &1517527759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517527761}
+  - component: {fileID: 1517527760}
+  m_Layer: 0
+  m_Name: CombatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1517527760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517527759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbe6471a03fce44e910cc9a05ce4587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islandManager: {fileID: 0}
+--- !u!4 &1517527761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517527759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7270499, y: -0.17323269, z: -4.500214}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1685033840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1661561946870873812, guid: a346e741c3a2a9745b0bf3ab9f06411f, type: 3}
@@ -892,3 +937,4 @@ SceneRoots:
   - {fileID: 416941053}
   - {fileID: 43089231}
   - {fileID: 425580063}
+  - {fileID: 1517527761}
