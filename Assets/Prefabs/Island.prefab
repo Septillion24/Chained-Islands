@@ -51,8 +51,10 @@ MonoBehaviour:
   adjacentIslands: []
   islandID: 0
   islandType: 0
-  maxWidth: 3
+  maxWidth: 2
   portraitHeight: 1
+  portraitOffset: 0
+  useMaxWidth: 0
   cohortUnitsStationedHere: []
 --- !u!61 &9216700056687102123
 BoxCollider2D:
@@ -97,7 +99,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.2}
+  m_Size: {x: 2.62, y: 2.35}
   m_EdgeRadius: 0
 --- !u!114 &8414262087965378964
 MonoBehaviour:

@@ -13,6 +13,8 @@ public class Island : MonoBehaviour
 
     public float maxWidth = 3.0f;
     public float portraitHeight = 1.0f;
+    public float portraitOffset = -1.0f;
+    public bool useMaxWidth = false;
 
     public List<CohortUnit> cohortUnitsStationedHere;
 
@@ -39,6 +41,42 @@ public class Island : MonoBehaviour
 
     public Vector3[] getCohortPositions()
     {
+        if (useMaxWidth)
+        {
+            return getCohortPositionsEven();
+        }
+        else
+        {
+            return getCohortPositionsOdd();
+        }
+    }
+    private Vector3[] getCohortPositionsOdd()
+    {
+        Vector3 centerPoint = transform.position;
+        int count = cohortUnitsStationedHere.Count;
+        Vector3[] positions = new Vector3[count];
+
+        if (count == 1)
+        {
+            float startX = centerPoint.x - maxWidth / 2;
+            positions[0] = new Vector3(startX + portraitOffset, centerPoint.y + portraitHeight, centerPoint.z);
+        }
+        else
+        {
+            float totalWidth = maxWidth;
+            float spacing = totalWidth / 3;
+            float startX = centerPoint.x - totalWidth / 2;
+
+            for (int i = 0; i < count; i++)
+            {
+                float currentX = startX + i * spacing;
+                positions[i] = new Vector3(currentX + portraitOffset, centerPoint.y + portraitHeight, centerPoint.z);
+            }
+        }
+        return positions;
+    }
+    private Vector3[] getCohortPositionsEven()
+    {
         Vector3 centerPoint = transform.position;
         int count = cohortUnitsStationedHere.Count;
         Vector3[] positions = new Vector3[count];
@@ -56,7 +94,7 @@ public class Island : MonoBehaviour
             for (int i = 0; i < count; i++)
             {
                 float currentX = startX + i * spacing;
-                positions[i] = new Vector3(currentX, centerPoint.y+portraitHeight, centerPoint.z);
+                positions[i] = new Vector3(currentX + portraitOffset, centerPoint.y + portraitHeight, centerPoint.z);
             }
         }
         return positions;

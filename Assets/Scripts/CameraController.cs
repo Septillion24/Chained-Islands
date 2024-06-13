@@ -33,12 +33,10 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             velocity += Vector3.left * speed * 5f * Time.deltaTime;
-            // transform.position += Vector3.left * Time.deltaTime * speed;
         }
         if (Input.GetKey(KeyCode.W))
         {
             velocity += Vector3.up * speed * 5f * Time.deltaTime;
-            // transform.position += Vector3.up * Time.deltaTime * speed;
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -47,7 +45,6 @@ public class CameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             velocity += Vector3.down * speed * 5f * Time.deltaTime;
-            // transform.position += Vector3.down * Time.deltaTime * speed;
         }
         if (Input.mouseScrollDelta.y > 0)
         {
