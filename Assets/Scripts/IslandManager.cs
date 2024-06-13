@@ -9,6 +9,7 @@ public class IslandManager : MonoBehaviour
 
     public List<Island> islands = new List<Island>();
     public GameObject islandChain;
+    public Island startIsland;
 
 
 
@@ -24,9 +25,8 @@ public class IslandManager : MonoBehaviour
             {
                 Transform start = island.transform;
                 Transform end = adjacentIsland.transform;
-                print("Start" + start.position + ", End: " + end.position);
 
-                GameObject chain = Instantiate(islandChain, island.transform.position, Quaternion.identity);
+                GameObject chain = Instantiate(islandChain, island.transform.position, Quaternion.identity, transform);
                 LineRenderer lineRenderer = chain.GetComponent<LineRenderer>();
                 lineRenderer.positionCount = 2;
                 lineRenderer.SetPosition(0, start.position);
@@ -40,4 +40,11 @@ public class IslandManager : MonoBehaviour
     {
 
     }
+
+
+
+
+    
+
+    
 }

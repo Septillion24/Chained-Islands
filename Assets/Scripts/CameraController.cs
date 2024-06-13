@@ -1,17 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float speed = 5.0f;
-    public Vector3 velocity;
+    float speed = 5.0f;
+    Vector3 velocity;
+    float zoomVelocity;
+    float zoom = 5.0f;
+    List<Selectable> selectedObjects = new List<Selectable>();
+
     public float zoomSpeed = 5.0f;
-    public float zoom = 5.0f;
     public float minZoom = 1.0f;
     public float maxZoom = 20.0f;
-    public float zoomVelocity;
+
+    private
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +55,23 @@ public class CameraController : MonoBehaviour
         {
             zoomVelocity += zoomSpeed * Time.deltaTime;
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            if (hit.collider != null)
+            {
+                Selectable selectable = hit.collider.gameObject.GetComponent<Selectable>();
+                if (selectable != null)
+                {
+                    Select(selectable);
+                }
+            }
+            else{
+                DeselectAll();
+            }
+
+        }
 
 
         transform.position += velocity * Time.deltaTime;
@@ -60,4 +82,27 @@ public class CameraController : MonoBehaviour
         velocity *= Mathf.Pow(0.05f, Time.deltaTime);
         zoomVelocity *= Mathf.Pow(0.02f, Time.deltaTime);
     }
+
+    private void Select(Selectable selected)
+    {
+        if (Input.GetKey(KeyCode.LeftShift) == false)
+        {
+            foreach (Selectable selectable in selectedObjects)
+            {
+                selectable.OnDeselect();
+            }
+            selectedObjects.Clear();
+        }
+        selected.OnSelect();
+        selectedObjects.Add(selected);
+    }
+    private void DeselectAll()
+    {
+        foreach (Selectable selectable in selectedObjects)
+        {
+            selectable.OnDeselect();
+        }
+        selectedObjects.Clear();
+    }
+
 }
