@@ -128,4 +128,13 @@ public class Island : MonoBehaviour, ISelectable
     {
         return gameObject;
     }
+
+    public void RemoveEnemy(Enemy enemy)
+    {
+        enemiesStationedHere.Remove(enemy);
+    }
+    public void RemoveCohortUnit(CohortUnit unit)
+    {
+        cohortUnitsStationedHere.Remove(unit);
+    }
 }

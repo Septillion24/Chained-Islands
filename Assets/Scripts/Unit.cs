@@ -21,10 +21,7 @@ public abstract class Unit : MonoBehaviour, ISelectable
     public bool isSelected { get => _isSelected; set => _isSelected = value; }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        isSelected = false;
-    }
+
     // Update is called once per frame
     void Update()
     {
@@ -33,6 +30,7 @@ public abstract class Unit : MonoBehaviour, ISelectable
 
     void Awake()
     {
+        isSelected = false;
         currentHealth = maxHealth;
         RefreshMovement();
     }
@@ -44,14 +42,16 @@ public abstract class Unit : MonoBehaviour, ISelectable
 
     public void TakeDamage(int damage)
     {
+        print($"{unitName} took {damage} damage. Health was {currentHealth} and is now {currentHealth - damage}.");
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
+            print("Unit died because its health was " + currentHealth + " because it took " + damage + " damage.");
             Die();
         }
     }
 
-    public void Die()
+    public virtual void Die()
     {
         Destroy(gameObject);
     }

@@ -26,6 +26,9 @@ public class CohortUnit : Unit
 
     void Awake()
     {
+        isSelected = false;
+        currentHealth = maxHealth;
+        RefreshMovement();
         // nameTag = GetComponentInChildren<TextMeshProUGUI>(true);
         nameTag.text = unitName;
         trueNameTag.text = $"\"{trueName}\"";
@@ -37,7 +40,7 @@ public class CohortUnit : Unit
 
     }
 
-    
+
 
     public override void OnSelect()
     {
@@ -49,5 +52,11 @@ public class CohortUnit : Unit
         base.OnDeselect();
         uiElements.SetActive(false);
     }
+    public override void Die()
+    {
+        currentLocation.RemoveCohortUnit(this);
+        base.Die();
+    }
+
 
 }
