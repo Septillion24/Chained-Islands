@@ -12,16 +12,21 @@ public class HealthBar : MonoBehaviour
 
     void Awake()
     {
-        foreach (Vector3 position in GetHealthBarPipLocations())
-        {
-            GameObject pip = Instantiate(healthBarPip, position, Quaternion.identity, transform);
-        }
+        UpdateHealthBar();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void UpdateHealthBar()
+    {
+        foreach (Vector3 position in GetHealthBarPipLocations())
+        {
+            GameObject pip = Instantiate(healthBarPip, position, Quaternion.identity, transform);
+        }
     }
 
     public Vector3[] GetHealthBarPipLocations()

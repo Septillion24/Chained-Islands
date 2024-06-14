@@ -11,7 +11,8 @@ public class CohortUnit : Unit
     public string trueName;
     [SerializeField] TextMeshProUGUI nameTag;
     [SerializeField] TextMeshProUGUI trueNameTag;
-    [SerializeField] GameObject healthBar;
+
+    [SerializeField] GameObject uiElements;
 
     // public TextMeshProUGUI nameTag;
 
@@ -28,7 +29,6 @@ public class CohortUnit : Unit
         // nameTag = GetComponentInChildren<TextMeshProUGUI>(true);
         nameTag.text = unitName;
         trueNameTag.text = $"\"{trueName}\"";
-        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -37,25 +37,17 @@ public class CohortUnit : Unit
 
     }
 
-    public void MoveTo(Island islandToGoTo)
-    {
-        currentLocation = islandToGoTo;
-        transform.position = islandToGoTo.transform.position;
-    }
+    
 
     public override void OnSelect()
     {
         base.OnSelect();
-        nameTag.gameObject.SetActive(true);
-        trueNameTag.gameObject.SetActive(true);
-        healthBar.SetActive(true);
+        uiElements.SetActive(true);
     }
     public override void OnDeselect()
     {
         base.OnDeselect();
-        nameTag.gameObject.SetActive(false);
-        trueNameTag.gameObject.SetActive(false);
-        healthBar.SetActive(false);
+        uiElements.SetActive(false);
     }
 
 }

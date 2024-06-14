@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -73,15 +75,38 @@ public class CohortManager : MonoBehaviour
     public bool TryMoveUnit(CohortUnit unit, Island islandToGoTo)
     {
         Island currentIsland = unit.currentLocation;
+        if (unit.movement < 1)
+        {
+            return false;
+        }
         if (islandManager.CheckAdjacent(currentIsland, islandToGoTo))
         {
+
             currentIsland.cohortUnitsStationedHere.Remove(unit);
             islandToGoTo.cohortUnitsStationedHere.Add(unit);
             unit.MoveTo(islandToGoTo);
+            unit.ReduceMovement(1);
+
             SetCohortPositions();
             return true;
         }
         return false;
+    }
+    public bool TryMoveUnit(CohortUnit unit, Island islandToGoTo, bool force)
+    {
+        if (force)
+        {
+            return TryMoveUnit(unit, islandToGoTo);
+        }
+        return false;
+    }
+
+    public void RefreshMovement()
+    {
+        foreach (CohortUnit unit in cohortUnits)
+        {
+            unit.RefreshMovement();
+        }
     }
 
 

@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
-public class Unit : MonoBehaviour, ISelectable
+public abstract class Unit : MonoBehaviour, ISelectable
 {
+    public HealthBar healthBar;
+
     public string unitName;
     public Island currentLocation;
     public int currentHealth;
     public int maxHealth;
     public int attack;
+    public int movement;
+    public int maxMovement;
+
+
 
     private bool _isSelected;
     public bool isSelected { get => _isSelected; set => _isSelected = value; }
@@ -19,11 +25,16 @@ public class Unit : MonoBehaviour, ISelectable
     {
         isSelected = false;
     }
-
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    void Awake()
+    {
+        currentHealth = maxHealth;
+        RefreshMovement();
     }
 
     public int DoAttackRoll()
@@ -69,4 +80,25 @@ public class Unit : MonoBehaviour, ISelectable
     {
         return gameObject;
     }
+
+    public void UpdateHealthBar()
+    {
+        healthBar.UpdateHealthBar();
+    }
+
+    public void MoveTo(Island islandToGoTo)
+    {
+        currentLocation = islandToGoTo;
+        transform.position = islandToGoTo.transform.position;
+    }
+
+    public void ReduceMovement(int count)
+    {
+        movement -= count;
+    }
+    public void RefreshMovement()
+    {
+        movement = maxMovement;
+    }
+
 }

@@ -17,6 +17,7 @@ public class CameraController : MonoBehaviour
     public float minZoom = 1.0f;
     public float maxZoom = 20.0f;
     public CohortManager cohortManager;
+    public TurnManager turnManager;
 
 
 
@@ -91,7 +92,10 @@ public class CameraController : MonoBehaviour
                 }
             }
         }
-
+        if (Input.GetKey(KeyCode.Space))
+        {
+            turnManager.NextTurn();
+        }
 
         transform.position += velocity * Time.deltaTime;
         zoom = Mathf.Clamp(zoom + zoomVelocity, minZoom, maxZoom);
