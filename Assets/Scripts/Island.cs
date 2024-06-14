@@ -19,7 +19,8 @@ public class Island : MonoBehaviour, ISelectable
     public List<CohortUnit> cohortUnitsStationedHere;
     public List<Enemy> enemiesStationedHere;
 
-    public bool isSelected { get => isSelected; set => isSelected = value; }
+    private bool _isSelected;
+    public bool isSelected { get => _isSelected; set => _isSelected = value; }
 
 
     // Start is called before the first frame update

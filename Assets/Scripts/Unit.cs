@@ -7,7 +7,8 @@ public class Unit : MonoBehaviour, ISelectable
 {
     public string unitName;
     public Island currentLocation;
-    public int health;
+    public int currentHealth;
+    public int maxHealth;
     public int attack;
 
     private bool _isSelected;
@@ -32,8 +33,8 @@ public class Unit : MonoBehaviour, ISelectable
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        if (health <= 0)
+        currentHealth -= damage;
+        if (currentHealth <= 0)
         {
             Die();
         }

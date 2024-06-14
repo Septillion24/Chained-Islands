@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: unitName
       value: Night
       objectReference: {fileID: 0}
+    - target: {fileID: -2833367208106521930, guid: b9e5820727c2d4c4595fd44af494803c, type: 3}
+      propertyPath: maxHealth
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 46360371695811147, guid: b9e5820727c2d4c4595fd44af494803c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -83,6 +87,14 @@ PrefabInstance:
     - target: {fileID: 2399822828099448922, guid: b9e5820727c2d4c4595fd44af494803c, type: 3}
       propertyPath: m_Name
       value: cohort_Kai
+      objectReference: {fileID: 0}
+    - target: {fileID: 3063699997445030600, guid: b9e5820727c2d4c4595fd44af494803c, type: 3}
+      propertyPath: m_text
+      value: '"Nightingale"'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166487908639195811, guid: b9e5820727c2d4c4595fd44af494803c, type: 3}
+      propertyPath: m_text
+      value: Night
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

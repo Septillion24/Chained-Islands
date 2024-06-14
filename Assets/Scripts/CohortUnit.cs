@@ -11,6 +11,7 @@ public class CohortUnit : Unit
     public string trueName;
     [SerializeField] TextMeshProUGUI nameTag;
     [SerializeField] TextMeshProUGUI trueNameTag;
+    [SerializeField] GameObject healthBar;
 
     // public TextMeshProUGUI nameTag;
 
@@ -22,11 +23,12 @@ public class CohortUnit : Unit
         trueNameTag.text = $"\"{trueName}\"";
     }
 
-    void Start()
+    void Awake()
     {
         // nameTag = GetComponentInChildren<TextMeshProUGUI>(true);
         nameTag.text = unitName;
         trueNameTag.text = $"\"{trueName}\"";
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -44,15 +46,16 @@ public class CohortUnit : Unit
     public override void OnSelect()
     {
         base.OnSelect();
-        print("Selected " + unitName + ", " + nameTag);
         nameTag.gameObject.SetActive(true);
         trueNameTag.gameObject.SetActive(true);
+        healthBar.SetActive(true);
     }
     public override void OnDeselect()
     {
         base.OnDeselect();
         nameTag.gameObject.SetActive(false);
         trueNameTag.gameObject.SetActive(false);
+        healthBar.SetActive(false);
     }
 
 }
