@@ -28,7 +28,6 @@ public class TurnManager : MonoBehaviour
 
     public void NextTurn()
     {
-        print("Next turn");
         currentTurn++;
         DoCombatChecks();
         cohortManager.RefreshMovement();
