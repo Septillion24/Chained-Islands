@@ -10,6 +10,7 @@ public class IslandManager : MonoBehaviour
     public List<Island> islands = new List<Island>();
     public GameObject islandChain;
     public Island startIsland;
+    public Island endIsland;
 
 
 

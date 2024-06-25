@@ -24,6 +24,7 @@ public class CohortManager : MonoBehaviour
         // TODO: do this when moving normally
         foreach (CohortUnit cohortMemberPrefab in cohortMemberPrefabs)
         {
+            print("A");
             CohortUnit cohortUnit = Instantiate(cohortMemberPrefab, transform.position, Quaternion.identity, transform);
             cohortUnits.Add(cohortUnit);
 

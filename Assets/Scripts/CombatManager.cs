@@ -37,7 +37,7 @@ public class CombatManager : MonoBehaviour
         List<CohortUnit> cohortUnits = island.cohortUnitsStationedHere;
         List<Enemy> enemies = island.enemiesStationedHere;
 
-        for (int i = 0; i < maxCombatTurns; i++)
+        for (combatTurn = 0; combatTurn < maxCombatTurns; combatTurn++)
         {
             DoCombatLoop(cohortUnits, enemies);
         }
@@ -46,6 +46,13 @@ public class CombatManager : MonoBehaviour
     {
         if (cohortUnits.Count == 0 || enemies.Count == 0)
         {
+            if (enemies.Count == 0)
+            {
+                foreach (CohortUnit unit in cohortUnits)
+                {
+                    unit.attack++;
+                }
+            }
             return;
         }
         int cohortAttackScore = 0;
