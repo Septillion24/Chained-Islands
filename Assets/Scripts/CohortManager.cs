@@ -12,7 +12,7 @@ public class CohortManager : MonoBehaviour
     public IslandManager islandManager;
 
     public List<CohortUnit> cohortMemberPrefabs = new List<CohortUnit>();
-    List<CohortUnit> cohortUnits = new List<CohortUnit>();
+    public List<CohortUnit> cohortUnits = new List<CohortUnit>();
 
 
 

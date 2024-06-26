@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour
@@ -9,6 +10,9 @@ public class TurnManager : MonoBehaviour
     public IslandManager islandManager;
     public CombatManager combatManager;
     public int maxCombatTurns = 20;
+
+    public bool wonGame = false;
+    public GameObject winScreen;
 
     int currentTurn = 0;
 
@@ -32,10 +36,17 @@ public class TurnManager : MonoBehaviour
         currentTurn++;
         combatManager.DoCombatChecks();
         cohortManager.RefreshMovement();
+        foreach (CohortUnit unit in cohortManager.cohortUnits)
+        {
+            if (unit.currentLocation == islandManager.endIsland)
+            {
+                winScreen.SetActive(true);
+            }
+        }
     }
 
 
-    
+
 
 }
 

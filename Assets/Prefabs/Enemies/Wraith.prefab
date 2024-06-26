@@ -73,6 +73,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7315789746851239838, guid: 0c94b17f52699ea4597fcd3aa4d9a2d4, type: 3}
+      propertyPath: unitName
+      value: Wraith
+      objectReference: {fileID: 0}
+    - target: {fileID: 7315789746851239838, guid: 0c94b17f52699ea4597fcd3aa4d9a2d4, type: 3}
       propertyPath: maxHealth
       value: 20
       objectReference: {fileID: 0}
@@ -82,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9166487908639195811, guid: 0c94b17f52699ea4597fcd3aa4d9a2d4, type: 3}
       propertyPath: m_text
-      value: 
+      value: Wraith
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
